@@ -80,7 +80,7 @@ impl AtomicStack {
     /// being pushed onto the stack.
     pub fn shutdown(&self) {
         let bt = ::backtrace::Backtrace::new();
-        println!("{:?}", bt);
+        println!("SHUTDOWN: {:?}", bt);
         // Shutdown the processing queue
         let ptr = self.head.swap(SHUTDOWN, SeqCst);
 

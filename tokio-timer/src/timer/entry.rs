@@ -303,6 +303,8 @@ impl Entry {
 
         if is_elapsed(curr) {
             if curr == ERROR {
+                let bt = ::backtrace::Backtrace::new();
+                println!("POLL_ELAPSED: {:?}", bt);
                 return Err(Error::shutdown());
             } else {
                 return Ok(().into());
@@ -315,6 +317,8 @@ impl Entry {
 
         if is_elapsed(curr) {
             if curr == ERROR {
+                let bt = ::backtrace::Backtrace::new();
+                println!("IS_ELAPSED: {:?}", bt);
                 return Err(Error::shutdown());
             } else {
                 return Ok(().into());

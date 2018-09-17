@@ -166,7 +166,11 @@ impl HandlePriv {
         CURRENT_TIMER.with(|current| {
             match *current.borrow() {
                 Some(ref handle) => Ok(handle.clone()),
-                None => Err(Error::shutdown()),
+                None => {
+                    let bt = ::backtrace::Backtrace::new();
+                    println!("No CURRENT_TIMER: {:?}", bt);
+                    Err(Error::shutdown())
+                },
             }
         })
     }
