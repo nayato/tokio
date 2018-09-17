@@ -31,6 +31,7 @@ extern crate crossbeam_utils;
 #[macro_use]
 extern crate futures;
 extern crate slab;
+extern crate backtrace;
 
 pub mod clock;
 pub mod delay_queue;

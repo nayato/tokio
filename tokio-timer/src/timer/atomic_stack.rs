@@ -79,6 +79,8 @@ impl AtomicStack {
     /// Drain all remaining nodes in the stack and prevent any new nodes from
     /// being pushed onto the stack.
     pub fn shutdown(&self) {
+        let bt = ::backtrace::Backtrace::new();
+        println!("{:?}", bt);
         // Shutdown the processing queue
         let ptr = self.head.swap(SHUTDOWN, SeqCst);
 
