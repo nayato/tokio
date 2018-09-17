@@ -168,7 +168,7 @@ impl HandlePriv {
                 Some(ref handle) => Ok(handle.clone()),
                 None => {
                     let bt = ::backtrace::Backtrace::new();
-                    println!("No CURRENT_TIMER: {:?}", bt);
+                    println!("No CURRENT_TIMER (on {:?}): {:?}", ::std::thread::current().id(), bt);
                     Err(Error::shutdown())
                 },
             }
